@@ -11,8 +11,9 @@ public class Game extends Canvas implements Runnable {
 
     public static int WIDTH = 1500;
     public static int HEIGHT = 700;
-    public static int choice = 0;
+    public static int choice = -1;
     public static int startingFlag = 0;
+    public static int closingFlag = 0;
     public static String NAME = "Plain vs Pterodactyls";
 
     JFrame frame = new JFrame(Game.NAME);
@@ -51,7 +52,9 @@ public class Game extends Canvas implements Runnable {
                     throw new RuntimeException(e);
                 }
             }
+            else if (choice == 0) break;
         }
+        frame.dispose();
     }
 
     public void init() {
@@ -86,10 +89,6 @@ public class Game extends Canvas implements Runnable {
             menu.Draw(g);
             choice = menu.Choose(moving.upPressed, moving.downPressed, moving.enterPressed, g);
             if (choice == 1) startingFlag = 1;
-            if (choice == 0) {
-                frame.dispose();
-                return;
-            }
         }
         g.dispose();
         bs.show();
@@ -103,11 +102,11 @@ public class Game extends Canvas implements Runnable {
         enemy.clear();
     }
 
-    void Frame(Game game) {
-        game.setPreferredSize(new Dimension(WIDTH, HEIGHT));
+    void Frame() {
+        this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new BorderLayout());
-        frame.add(game, BorderLayout.CENTER);
+        frame.add(this, BorderLayout.CENTER);
         frame.pack();
         frame.setResizable(false);
         frame.setVisible(true);
