@@ -16,7 +16,7 @@ public class Game extends Canvas implements Runnable {
     public static int closingFlag = 0;
     public static String NAME = "Plain vs Pterodactyls";
 
-    JFrame frame = new JFrame(Game.NAME);
+    JFrame frame = new JFrame(NAME);
 
     public static Plain plain;
     public static Lives lives;
