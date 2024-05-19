@@ -13,7 +13,6 @@ public class Game extends Canvas implements Runnable {
     public static int HEIGHT = 700;
     public static int choice = -1;
     public static int startingFlag = 0;
-    public static int closingFlag = 0;
     public static String NAME = "Plain vs Pterodactyls";
 
     JFrame frame = new JFrame(NAME);
@@ -46,13 +45,13 @@ public class Game extends Canvas implements Runnable {
                 Enemy.acceleration++;
                 plain.Breaking();
                 if (Lives.lives == 0) choice = 0;
-                try {
-                    Thread.sleep(1);
-                } catch (Exception e) {
-                    throw new RuntimeException(e);
-                }
             }
             else if (choice == 0) break;
+            try {
+                Thread.sleep(1);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
         }
         frame.dispose();
     }
